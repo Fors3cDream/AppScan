@@ -1,0 +1,689 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"FREG_HAR",
+				"FREG_HARDWARE_MODULE_ID"
+			],
+			[
+				"HAL_",
+				"HAL_VARIANT_KEYS_COUNT"
+			],
+			[
+				"H",
+				"HAL_LIBRARY_PATH2"
+			],
+			[
+				"HAL_LIB",
+				"HAL_LIBRARY_PATH1"
+			],
+			[
+				"variant",
+				"variant_keys"
+			],
+			[
+				"FREG",
+				"FREG_HARDWARE_DEVICE_ID"
+			],
+			[
+				"int",
+				"int"
+			],
+			[
+				"Fre",
+				"FREG_DEVICE_NAME"
+			],
+			[
+				"F",
+				"FREG_DEVICE_NAME"
+			],
+			[
+				"unregister",
+				"unregister_chrdev_region"
+			],
+			[
+				"E",
+				"ENOMEM"
+			],
+			[
+				"for",
+				"formaction	Attr"
+			],
+			[
+				"PA",
+				"PAGED_CODE"
+			],
+			[
+				"HelloWDM",
+				"HelloWDMUnload"
+			],
+			[
+				"S",
+				"STATUS_SUCCESS"
+			],
+			[
+				"HelloW",
+				"HelloWDMDispatchRoutine"
+			],
+			[
+				"PD",
+				"PDEVICE_OBJECT"
+			],
+			[
+				"Hell",
+				"HelloWDMDispatchRoutine"
+			],
+			[
+				"Next",
+				"NextStackDevice"
+			],
+			[
+				"IoDelete",
+				"IoDeleteSymbolicLink"
+			],
+			[
+				"Serial",
+				"SerialTarget"
+			],
+			[
+				"N",
+				"NTSTATUS"
+			],
+			[
+				"Hello",
+				"HelloWDMPnp"
+			],
+			[
+				"IoCreate",
+				"IoCreateSymbolicLink"
+			],
+			[
+				"PDEVI",
+				"PDEVICE_EXTENSION"
+			],
+			[
+				"NT",
+				"NT_SUCCESS"
+			],
+			[
+				"Driver",
+				"DriverObject"
+			],
+			[
+				"PDR",
+				"PDRIVER_OBJECT"
+			],
+			[
+				"PAGE",
+				"PAGEDCODE"
+			],
+			[
+				"_",
+				"_DEVICE_EXTENSION"
+			],
+			[
+				"HelloDD",
+				"HelloDDKDispatchRoutine"
+			],
+			[
+				"PDEVICE_",
+				"PDEVICE_OBJECT"
+			],
+			[
+				"ustr",
+				"ustrSymLinkName"
+			],
+			[
+				"Device",
+				"DeviceExtension"
+			],
+			[
+				"pDev",
+				"pDevExt"
+			],
+			[
+				"PDEVICE",
+				"PDEVICE_OBJECT"
+			],
+			[
+				"INIT",
+				"INITCODE"
+			],
+			[
+				"HelloD",
+				"HelloDDKDispatchRoutine"
+			],
+			[
+				"HELLO",
+				"HelloDDKDispatchRoutine"
+			],
+			[
+				"init",
+				"initWithRed"
+			],
+			[
+				"imp",
+				"implementation"
+			],
+			[
+				"im",
+				"implementation"
+			],
+			[
+				"lpszDri",
+				"lpszDriverFileName"
+			],
+			[
+				"lpszDr",
+				"lpszDriverPathName"
+			],
+			[
+				"lpsz",
+				"lpszDriverFileName"
+			],
+			[
+				"upload",
+				"upload_destination"
+			],
+			[
+				"GLOA",
+				"GLOBALMEM_SIZE"
+			],
+			[
+				"remote",
+				"remotePort"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "templates/static_analysis.html",
+			"settings":
+			{
+				"buffer_size": 48457,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/start_test.html",
+			"settings":
+			{
+				"buffer_size": 25622,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "StaticAnalyzer/dvm_permissions.py",
+			"settings":
+			{
+				"buffer_size": 9467,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/index.html",
+			"settings":
+			{
+				"buffer_size": 7599,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"pci",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/qiaolianjin/magazine/AppScan",
+		"/Users/qiaolianjin/magazine/AppScan/AppScan",
+		"/Users/qiaolianjin/magazine/AppScan/static",
+		"/Users/qiaolianjin/magazine/AppScan/static/css",
+		"/Users/qiaolianjin/magazine/AppScan/static/js",
+		"/Users/qiaolianjin/magazine/AppScan/StaticAnalyzer",
+		"/Users/qiaolianjin/magazine/AppScan/templates",
+		"/Users/qiaolianjin/magazine/AppScan/templates/js"
+	],
+	"file_history":
+	[
+		"/Users/qiaolianjin/Downloads/protector/Makefile",
+		"/Users/qiaolianjin/magazine/AppScan/MalwareAnalyzer/views.py",
+		"/Users/qiaolianjin/magazine/AppScan/AppScan/views.py",
+		"/Users/qiaolianjin/magazine/AppScan/static/css/style.css",
+		"/Users/qiaolianjin/magazine/AppScan/templates/index.html",
+		"/Users/qiaolianjin/magazine/AppScan/static/dash/css/AdminLTE.min.css",
+		"/Users/qiaolianjin/magazine/AppScan/StaticAnalyzer/views.py",
+		"/Users/qiaolianjin/magazine/AppScan/static/js/custom.js",
+		"/Users/qiaolianjin/magazine/AppScan/templates/base.html",
+		"/Users/qiaolianjin/magazine/AppScan/apkid.py",
+		"/Users/qiaolianjin/magazine/AppScan/__init__.py",
+		"/Users/qiaolianjin/magazine/tools/android_tools/jeb/jeb_linux.sh",
+		"/Users/qiaolianjin/magazine/AppScan/templates/smali.html",
+		"/Users/qiaolianjin/magazine/AppScan/StaticAnalyzer/dvm_permissions.py",
+		"/Users/qiaolianjin/magazine/AppScan/templates/static_analysis.html",
+		"/Users/qiaolianjin/magazine/AppScan/templates/index_n.html",
+		"/Users/qiaolianjin/magazine/Mobile-Security-Framework-MobSF/static/css/bootstrap-theme.min.css",
+		"/Users/qiaolianjin/magazine/Mobile-Security-Framework-MobSF/StaticAnalyzer/dvm_permissions.py",
+		"/Users/qiaolianjin/magazine/Mobile-Security-Framework-MobSF/MobSF/views.py",
+		"/Users/qiaolianjin/magazine/Mobile-Security-Framework-MobSF/StaticAnalyzer/views.py",
+		"/Users/qiaolianjin/magazine/Mobile-Security-Framework-MobSF/MobSF/settings.py",
+		"/Users/qiaolianjin/magazine/Mobile-Security-Framework-MobSF/templates/static_analysis.html",
+		"/Users/qiaolianjin/magazine/Mobile-Security-Framework-MobSF/MobSF/urls.py",
+		"/Users/qiaolianjin/magazine/Mobile-Security-Framework-MobSF/templates/index.html",
+		"/Users/qiaolianjin/Desktop/“≥√Ê/js/edge.6.0.0.min.js",
+		"/Users/qiaolianjin/Desktop/detach.sh",
+		"/Users/qiaolianjin/Desktop/attach.sh",
+		"/Users/qiaolianjin/Desktop/tiebaspider.py",
+		"/Users/qiaolianjin/VirtualBox VMs/MobSF_VM_0.2/MobSF_VM_0.2.vbox",
+		"/Users/qiaolianjin/magazine/Mobile-Security-Framework-MobSF/manage.py",
+		"/Users/qiaolianjin/magazine/Mobile-Security-Framework-MobSF/DynamicAnalyzer/views.py",
+		"/Users/qiaolianjin/magazine/Mobile-Security-Framework-MobSF/MobSF/views.pyc",
+		"/Users/qiaolianjin/Downloads/png_trans.py",
+		"/Users/qiaolianjin/code/c_code/Android_learn.c",
+		"/Users/qiaolianjin/magazine/ApkAudit/SaveResult.py",
+		"/Users/qiaolianjin/magazine/ApkAudit/uitls.py",
+		"/Users/qiaolianjin/magazine/lobotomy/lobotomy.py",
+		"/Users/qiaolianjin/magazine/lobotomy/framework/commands/cmd.py",
+		"/Users/qiaolianjin/Desktop/tfbank/assets/www/modules/user/js/services.js",
+		"/Users/qiaolianjin/Desktop/tfbank/assets/www/modules/transfer/js/controller.js",
+		"/Users/qiaolianjin/code/c_code/for_learn/android_learn.c",
+		"/Users/qiaolianjin/code/c_code/Andorid_learn.cpp",
+		"/Users/qiaolianjin/code/browser_sec/new_xss.html",
+		"/Users/qiaolianjin/Desktop/tfbank/assets/www/modules/validation/js/controllers.js",
+		"/Users/qiaolianjin/code/c_code/Driver_learn.c",
+		"/Users/qiaolianjin/Desktop/cgnb.json",
+		"/Users/qiaolianjin/Desktop/cards.json",
+		"/Users/qiaolianjin/Desktop/tfbank/assets/www/modules/user/js/controllers.js",
+		"/Users/qiaolianjin/magazine/fuzzer/fuzzer_example/kitty_tutorials.py",
+		"/Users/qiaolianjin/magazine/fuzzer/fuzzer_example/remote_client_fuzzer.py",
+		"/Users/qiaolianjin/magazine/fuzzer/fuzzer_example/client_fuzzer.py",
+		"/Users/qiaolianjin/Desktop/accountNumber.xml",
+		"/Users/qiaolianjin/code/c_code/老码识途.c",
+		"/Users/qiaolianjin/Downloads/新版本.js",
+		"/Users/qiaolianjin/Downloads/旧版本.js",
+		"/Users/qiaolianjin/code/c_code/oc_learn.m",
+		"/Users/qiaolianjin/magazine/lobotomy/framework/brains/apk/decompile.py",
+		"/Users/qiaolianjin/magazine/lobotomy/framework/brains/apk/loader.py",
+		"/Users/qiaolianjin/magazine/lobotomy/framework/brains/bowser/bowser.py",
+		"/Users/qiaolianjin/magazine/tools/android_tools/drozer/src/drozer/cli/agent.py",
+		"/Users/qiaolianjin/magazine/tools/android_tools/drozer/src/drozer/android.py",
+		"/Users/qiaolianjin/magazine/tools/android_tools/drozer/src/drozer/modules/common/package_manager.py",
+		"/Users/qiaolianjin/magazine/tools/android_tools/drozer/src/drozer/modules/app/package.py",
+		"/Users/qiaolianjin/magazine/tools/android_tools/drozer/src/drozer/modules/app/__init__.py",
+		"/Users/qiaolianjin/magazine/unicorn/hook.c",
+		"/Users/qiaolianjin/Desktop/tfbank_copy/assets/data/nccbmb/controller/Controller.js",
+		"/Users/qiaolianjin/Desktop/tfbank_copy/AndroidManifest.xml",
+		"/Users/qiaolianjin/Desktop/tfbank/smali/org/apache/cordova/CordovaActivity.smali",
+		"/Users/qiaolianjin/Desktop/tfbank/assets/www/modules/validation/js/cgnb.js",
+		"/Users/qiaolianjin/Desktop/tfbank/assets/www/js/app.js",
+		"/Users/qiaolianjin/code/frida_demos/rpc.py",
+		"/Users/qiaolianjin/code/frida_demos/call.py",
+		"/Users/qiaolianjin/code/frida_demos/modify.py",
+		"/Users/qiaolianjin/Desktop/pay_server/class/YLUniCrypto.h",
+		"/Users/qiaolianjin/code/frida_demos/hook.py",
+		"/Users/qiaolianjin/Desktop/pay_server/class/按钮响应.txt",
+		"/Users/qiaolianjin/Desktop/pay_server/class/UPOrderView.h",
+		"/Users/qiaolianjin/Desktop/pay_server/class/UPHttpsConnect.h",
+		"/Users/qiaolianjin/Desktop/windows内核安全与驱动开发/source/comcap/comcap.c",
+		"/Users/qiaolianjin/code/c_code/LoadDriver.cpp",
+		"/Users/qiaolianjin/Downloads/DriverTest/DriverTest/DriverTest.cpp",
+		"/Users/qiaolianjin/magazine/lobotomy/framework/__init__.py",
+		"/Users/qiaolianjin/code/drozer-agent/AndroidManifest.xml",
+		"/Users/qiaolianjin/Desktop/mp4ba.py",
+		"/Users/qiaolianjin/code/android_sec/core-android-audiocapture-master/dbi_release/hijack_func/hooker.h",
+		"/Users/qiaolianjin/code/android_sec/core-android-audiocapture-master/dbi_release/libt.c",
+		"/Users/qiaolianjin/code/c_code/变色龙.c",
+		"/Users/qiaolianjin/code/c_code/百钱白鸡.c",
+		"/Users/qiaolianjin/code/c_code/调戏QQ.c",
+		"/Users/qiaolianjin/code/py_code/shodan_api.py",
+		"/Users/qiaolianjin/code/c_code/globalmem.c",
+		"/Users/qiaolianjin/Desktop/dedecms.php",
+		"/Users/qiaolianjin/code/datadriven/ch03/python/ch03.py",
+		"/Users/qiaolianjin/Desktop/ftp_client.py",
+		"/Users/qiaolianjin/Desktop/ftp/get.c",
+		"/Users/qiaolianjin/Desktop/ftp/snd.c",
+		"/Users/qiaolianjin/magazine/Frida/sohook.py",
+		"/Users/qiaolianjin/magazine/Frida/hook.py",
+		"/Users/qiaolianjin/magazine/Frida/hello.c",
+		"/Users/qiaolianjin/Desktop/ios1/AppDelegate.h",
+		"/Users/qiaolianjin/Documents/dexhunter/dexhunter.c",
+		"/Users/qiaolianjin/magazine/tools/android_tools/apktool/apktool2.bat",
+		"/Users/qiaolianjin/magazine/cydia_dexdump/dexdump.cpp"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"CodeAn",
+			"DANG",
+			"CodeAnalysis",
+			"DANG",
+			"dang\"",
+			"dang",
+			"ManifestAnalysis(",
+			"e_act",
+			"ManifestAnalysis(",
+			"platform",
+			"reus",
+			"FileWrapper",
+			"FilerWrapper",
+			"Jar2Java",
+			"UNZIP",
+			"index",
+			"An intent-filter exists",
+			"dangerous",
+			"Unknown",
+			"FormatPermissions(",
+			"权限",
+			"FOTA",
+			"permissions",
+			"get_template",
+			"TEMPLATE",
+			"uploadFile",
+			"CodeAnalysis",
+			"static_analysis_android",
+			"ADB_CON_ID",
+			"getIdentifier(",
+			"getIdentifier",
+			"ADB_CON_ID",
+			"unable to connect to",
+			"encodePlainPass",
+			"destory",
+			"IoCreateSymbolic",
+			"Dialog(\"Diag1\")",
+			"Module",
+			"frameWork",
+			"UIButton",
+			"checkbox",
+			"my_init(",
+			"Unsent",
+			"remoteHost",
+			"localPaht",
+			"button",
+			"toolbar",
+			"inbox"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"intent-filter被配置",
+			"destroy",
+			"server_ip",
+			"localPath"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "templates/static_analysis.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 48457,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"is_init_dirty_state": false,
+							"origin_encoding": "UTF-8",
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1095.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "templates/start_test.html",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 25622,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"is_init_dirty_state": false,
+							"origin_encoding": "ASCII",
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5504.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "StaticAnalyzer/dvm_permissions.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9467,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8873,
+								8873
+							]
+						],
+						"settings":
+						{
+							"is_init_dirty_state": false,
+							"origin_encoding": "UTF-8",
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1339.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "templates/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7599,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"is_init_dirty_state": false,
+							"origin_encoding": "UTF-8",
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1039.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "AppScan.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 261.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

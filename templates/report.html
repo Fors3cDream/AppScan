@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset = "utf-8">
+{% block content %}
+
+<h1 align = "center" class="page-header">{{name}}分析报告</h1>
+<hr>
+<div class = "col-lg-7">
+    <div class="panerl panel-default" >
+        <div class = "panel-heading" >
+            <h3 class = "panel-title"><i class = "fa fa-clock-o fa-fw"></i><span class="glyphicon glyphicon-file"></span>1. 文件信息</h3><hr>
+            </div>
+        <div class="panel-body">
+            <div class="list-group">
+                <p>
+                <span class="label label-primary">文件名: </span>
+                {{ name }}
+                </p><p>
+                <span class="label label-primary">文件包名: </span>
+                {{ packagename }}
+            </p>
+                <p>
+                <span class="label label-primary">文件MD5值: </span>
+                {{ md5 }}
+                </p><p>
+                <span class="label label-primary">文件sha1值: </span>
+                {{ sha1 }}
+                </p><p>
+                <span class="label label-primary">应用版本: </span>
+                {{ androvername}}
+                </p></div>
+<div class="clo-lg-12">
+    <div class="panel panel-default">
+        <h3 class="panel-heading">
+            <h3 class="panel-title"<i class="fa fa-clock-o fa-fw"></i><span class="glyphicon glyphicon-eye-close"></span>证书信息: </h3><hr>
+        </div><div class="panel-body">
+    <pre>
+        {{ certinfo | safe}}
+    </pre>
+    {% if issued == "good" %}
+<strong>证书状态: </strong><span class="label label-success">正常</span>
+{% else %}
+<strong>证书状态: </strong><span class="label label-danger">异常</span>
+<br />
+<strong>描述: </strong>App通过'Android Debug'调试证书进行签名.
+正式发行版应用不能通过调试证书进行签名发布.
+{% endif %}
+
+                            </div>
+    <hr>
+                        </div>
+                    </div>
+</div>
+
+<div class = "col-lg-7">
+    <div class="panerl panel-default" >
+        <div class = "panel-heading" >
+            <h3 class = "panel-title"><i class = "fa fa-clock-o fa-fw"></i><span class="glyphicon glyphicon-file"></span><b>2. 分析信息</b></h3><hr>
+            </div>
+        <div class="panel-body">
+        <div class="list-group">
+            <p>
+                <span class="label label-primary"><b>2.1: 敏感数据暴露</b></span>
+                <br>
+                <hr>
+            <span class = "label label-primary"> 2.1.1: 明文传输用户名、密码和验证码等敏感信息</span>
+            <table border="0.25">
+  <tr>
+    <td width="50" height="50">问题描述</td>
+    <td>用户登录过程中,在与服务器端交互时明文传输用户名、密码或者验证
+码等,可导致用户敏感信息泄露。
+    </td>
+  </tr>
+                <tr>
+                    <td>威胁等级</td>
+                    <td>高</td>
+                </tr>
+  <tr>
+    <td>检测结果</td>
+    <td>未知</td>
+  </tr>
+                <tr>
+    <td>检测建议</td>
+    <td>申请手工检测</td>
+  </tr>
+</table>
+            <hr>
+            <span class = "label label-primary"> 2.1.2: 不安全的本地存储</span>
+            <table border="0.25">
+  <tr>
+    <td width="50">问题描述</td>
+    <td>安卓开发者使用多种方法将数据存储在安卓应用中,而存储在本地的数
+据文件如果未加密,易造成敏感信息泄漏。
+    </td>
+  </tr>
+                <tr>
+                    <td>威胁等级</td>
+                    <td>高</td>
+                </tr>
+  <tr>
+    <td>检测结果</td>
+    <td>未知</td>
+  </tr>
+                <tr>
+    <td>检测建议</td>
+    <td>申请手工检测</td>
+  </tr>
+</table>
+        </div>
+        </div>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}
+</html>

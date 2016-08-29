@@ -1,0 +1,1281 @@
+<html>
+<meta charset="utf-8">
+  {% extends "base.html" %}
+   {% block content %}
+      <!-- Left side column. contains the logo and sidebar -->
+      <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <div class="sidebar" id="scrollspy">
+
+          <!-- sidebar menu: : style can be found in sidebar.less -->
+          <ul class="nav sidebar-menu">
+            <li class="header">静态分析</li>
+            <li class="active"><a href="#information"><i class="glyphicon glyphicon-info-sign"></i> 友情提示</a></li>
+            <li class="active"><a href="#information"><i class="glyphicon glyphicon-info-sign"></i> 详细信息</a></li>
+            <li><a href="#nature"><i class="glyphicon glyphicon-tasks"></i> 其他选项</a></li>
+
+            <li class="treeview">
+              <a href="javascript::;"><i class="fa fa-circle-o"></i> 安全分析</a>
+              <ul class="nav treeview-menu">
+                <li><a href="#safety"><i class="fa fa-search"></i> 应用安全检测</a></li>
+                <li><a href="#safety"><i class="fa fa-code"></i> 源码安全检测</a></li>
+                <li><a href="#safety"><i class="fa fa-file-text-o"></i> 数据安全检测</a></li>
+
+            <li><a href="#permissions"><i class="fa fa-align-justify"></i> 权限详情</a></li>
+            <li><a href="#certificate"><i class="fa fa-certificate"></i> 签名证书详情</a></li>
+            <li><a href="#android-api"><i class="fa fa-dot-circle-o"></i> Android API调用分析详情</a></li>
+            <li><a href="#manifest"><i class="fa fa-search"></i> Manifest配置文件分析</a></li>
+                <li><a href="#code"><i class="fa fa-code"></i> 代码分析详情</a></li>
+                <li><a href="#file"><i class="fa fa-file-text-o"></i> 文件分析详情</a></li>
+
+            <li><a href="#nature1"><i class="glyphicon glyphicon-tasks"></i> 其他代码信息</a></li>
+              </ul>
+            </li>
+
+
+            <li class="treeview">
+              <a href="javascript::;"><i class="fa fa-plus"></i> 信息搜集</a>
+              <ul class="nav treeview-menu">
+                <li><a href="#url"><i class="glyphicon glyphicon-globe"></i> URLs</a></li>
+                <li><a href="#domain"><i class="glyphicon glyphicon-screenshot"></i> 恶意域名检测</a></li>
+                <li><a href="#email"><i class="glyphicon glyphicon-envelope"></i> Emails</a></li>
+                <li><a href="#string"><i class="glyphicon glyphicon-sort-by-alphabet-alt"></i> 字符串</a></li>
+              </ul>
+            </li>
+
+            <li class="treeview">
+              <a href="javascript::;"><i class="fa fa-bullseye"></i> 组件详情</a>
+              <ul class="nav treeview-menu">
+                <li><a href="#activities"><i class="fa fa-language"></i> Activities</a></li>
+                <li><a href="#services"><i class="fa fa-gears"></i> Services</a></li>
+                <li><a href="#receivers"><i class="fa fa-sort-amount-desc"></i> Receivers</a></li>
+                <li><a href="#providers"><i class="fa fa-database"></i> Providers</a></li>
+                <li><a href="#libraries"><i class="glyphicon glyphicon-chevron-down"></i> Libraries</a></li>
+                <li><a href="#files"><i class="fa fa-files-o"></i> 文件</a></li>
+              </ul>
+            </li>
+            <li><a target="_blank" href="../PDF/?md5={{ md5 }}&amp;type=APK"><i class="glyphicon glyphicon-list-alt"></i> 下载分析报告</a></li>
+          </ul>
+        </div>
+        <!-- /.sidebar -->
+      </aside>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+
+          <form id="dynform" action="../DynamicAnalyzer/" method="POST">
+           {% csrf_token %}
+          <input type="hidden" name="md5" value="{{ md5 }}">
+          <input type="hidden" name="pkg" value="{{ packagename }}">
+          <input type="hidden" name="lng" value="{{ mainactivity }}">
+          </form>
+
+
+        <!-- Main content -->
+        <div class="content body">
+
+            <section id="information">
+              <h2 class="page-header"></h2>
+              <p class="lead">
+                  <div class="row">
+                <div class="col-sm-12">
+                  <div class="box box-primary">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">友情提示</h3>
+                      <span class="label label-primary pull-right"><i class="glyphicon glyphicon-file"></i></span>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                       <div class="list-group">
+                              <p>
+                                  <span class="label label-primary"><p>此版报告为奥诚移动应用安全检测系统自动化分析后生成的参考报告，</p>
+                                      <p>如果需要更详细的手工分析报告，请与我们联系：</P>
+                                  <p style='color:#fb7b00'><strong>地址：中国·四川·成都市锦绣路1号保利中心东3号楼1612号</strong> </p>
+                                  <p style='color:#fb7b00'><strong>邮编：610041 总机：028-85241226 传真：028-85241226-806 E-mail：aocheng@scaocheng.com</strong></p></span>
+                              </p>
+                         </div>
+
+                    </div><!-- /.box-body -->
+                  </div><!-- /.box -->
+                </div><!-- /.col -->
+              </div>
+              </p>
+              </section>
+
+<section id="information">
+  <h2 class="page-header"></h2>
+  <p class="lead">
+      <div class="row">
+    <div class="col-sm-12">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">文件详细信息</h3>
+          <span class="label label-primary pull-right"><i class="glyphicon glyphicon-file"></i></span>
+        </div><!-- /.box-header -->
+        <div class="box-body">
+           <div class="list-group">
+                  <p>
+                      <span class="label label-primary">文件名</span>
+                      {{ name }}
+                  </p>
+    <br>
+                  <p>
+                      <span class="label label-primary">大小</span>
+                      {{ size }}
+                  </p>
+    <br>
+                  <p>
+                      <span class="label label-primary">MD5</span>
+                      {{ md5 }}
+                  </p>
+    <br>
+                  <p>
+                     <span class="label label-primary">SHA1</span>
+                      {{ sha1 }}
+                  </p>
+    <br>
+                  <p>
+                     <span class="label label-primary">SHA256</span>
+                    {{ sha256 }}
+                </p>
+    <br>
+                <p>
+                     <span class="label label-primary">包名</span>
+                     {{ packagename }}
+                  </p>
+    <br>
+                  <p>
+                     <span class="label label-primary">Main Activity</span>
+                    {{ mainactivity }}
+                  </p>
+    <br>
+                  <p>
+                     <span class="label label-primary">编译SDK版本</span>
+                     {{ targetsdk }}
+                     </p>
+    <br>
+                   <p>
+                     <span class="label label-primary">Min SDK</span>
+                      {{ minsdk }}
+                      </p>
+    <br>
+                      <p>
+                     <span class="label label-primary">Max SDK</span>
+                     {{ maxsdk }}
+                     </p>
+    <br>
+                  <p>
+                     <span class="label label-primary">应用版本</span>
+                     {{ androvername }}
+                  </p>
+    <br>
+                  <p>
+                  <span class="label label-primary">代码版本</span>
+                  {{ androver }}
+                  </p>
+             </div>
+
+        </div><!-- /.box-body -->
+      </div><!-- /.box -->
+    </div><!-- /.col -->
+  </div>
+  </p>
+  </section>
+
+  <section>
+  <h2 class="page-header"></h2>
+  <p class="lead">
+      <div class="row">
+    <div class="col-sm-12">
+      <div class="box box-danger">
+        <div class="box-header with-border">
+          <h3 class="box-title">App组件信息</h3>
+          <span class="label label-danger pull-right"><i class="glyphicon glyphicon-info-sign"></i></span>
+        </div><!-- /.box-header -->
+    <!---Components-->
+  </div><!-- /.row -->
+      <!-- Small boxes (Stat box) -->
+      <div class="row">
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3>{{ act_count }}</h3>
+
+              <p>ACTIVITIES</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-language"></i>
+            </div>
+            <a href="#activities" class="small-box-footer">查看<i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3>{{ serv_count }}</h3>
+
+              <p>SERVICES</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-gears"></i>
+            </div>
+            <a href="#services" class="small-box-footer">查看 <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <h3>{{ bro_count }}</h3>
+
+              <p>RECEIVERS</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-sort-amount-desc"></i>
+            </div>
+            <a href="#receivers" class="small-box-footer">查看 <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h3>{{ prov_count }}</h3>
+
+              <p>PROVIDERS</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-database"></i>
+            </div>
+            <a href="#providers" class="small-box-footer">查看 <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+      </div>
+      <!-- /.row -->
+
+ <!--Exported Components-->
+<div class="row">
+
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-aqua"><i class="fa fa-language"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Exported </br>Activities</span>
+              <span class="info-box-number">{{ e_act }}</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-green"><i class="fa fa-gears"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Exported </br>Services</span>
+              <span class="info-box-number">{{ e_ser }}</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+
+        <!-- fix for small devices only -->
+        <div class="clearfix visible-sm-block"></div>
+
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-yellow"><i class="fa fa-sort-amount-desc"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Exported </br>Receivers</span>
+              <span class="info-box-number">{{e_bro}}</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-red"><i class="fa fa-database"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Exported </br>Providers</span>
+              <span class="info-box-number">{{e_cnt}}</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+      </div>
+ <!--End of Exported -->
+</section><!-- /#introduction -->
+
+
+<!-- ============================================================= -->
+
+<section id="nature">
+  <h2 class="page-header"></h2>
+
+
+    <div class="row">
+    <div class="col-sm-6">
+      <div class="box box-danger">
+        <div class="box-header with-border">
+          <h3 class="box-title">其他选项</h3>
+          <span class="label label-danger pull-right"><i class="fa fa-flash"></i></span>
+        </div><!-- /.box-header -->
+        <div align="center" class="box-body">
+          <a target="_blank" href="../Java/?md5={{ md5 }}{{ zipped }}&user={{ user }}" class="btn btn-info" role="button"><i class="fa fa-code"></i> 查看Java代码</a>
+            <a href="../download/?md5={{ md5 }}&user={{ user }}&file={{md5}}-java.zip" class="btn btn-warning" role="button"> <i class="glyphicon glyphicon-download"></i> 下载Java代码</a>
+              </br>
+            <a target="_blank" href="../Smali/?md5={{ md5 }}&user={{ user }}" class="btn btn-info" role="button"><i class="fa fa-code"></i>查看Smali代码</a>
+            <a href="../download/?md5={{ md5 }}&user={{ user }}&file={{md5}}-smali.zip" class="btn btn-warning"> <i class="glyphicon glyphicon-download"></i> 下载Smali代码</a>
+          </br>
+             <a href="../StaticAnalyzer/?checksum={{ md5 }}&amp;name={{ name }}&amp;us={{ hashuser }}&amp;type=apk&amp;rescan=1" class="btn btn-info" role="button"><i class="glyphicon glyphicon-refresh"></i> 重新检测</a>
+             <a target="_blank" href="{{mani}}" role="button" class="btn btn-warning"><i class="fa fa-eye"></i> 查看AndroidManifest.xml</a>
+          </br></br>
+          <!--<a href="javascript:document.getElementById('dynform').submit();" class="btn btn-success btn-lg" role="button"><i class="glyphicon glyphicon-play-circle"></i> 开始动态分析</a>-->
+
+        </div><!-- /.box-body -->
+      </div><!-- /.box -->
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+
+</section>
+
+
+<!-- ============================================================= -->
+
+
+
+<!-- ============================================================= -->
+
+<section id="safety">
+<h3 class="header">安全分析概览</h3>
+    <div class="row">
+
+        <div class="col-sm-4">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">
+                        <i class="fa fa-search"></i> 应用安全检测
+                    </h3>
+                    <p class="text-muted mt10">
+                        主要对应用进行，业务安全、组件安全、WebView安全性的检测，发现软件登录、支付不合理的设计， 以及暴露
+                        的组件漏洞，输入监听、界面劫持和被 调试等风险的检测。
+                    </p>
+                </div>
+                <ul class="box-body item-list">
+                    <li class="pd10">
+                        <div class="clearfix item-row">
+                            <i class="fa pull-left"></i><strong class="pull-left">Activity安全</strong>
+                            {% if e_act %}
+                            <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">危险</span>
+                            {% else %}
+                            <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">安全</span>
+                            {% endif %}
+                        </div>
+                        <div class="box-body safety-details">
+                            <span>导出的组件可以被第三方app任意调用，导致敏感信息泄露或者恶意攻击者精心构造攻击载荷达到攻击的目的。</span>
+
+                        </div>
+                    </li>
+                    <li class="clearfix pd10">
+
+                        <div class="clearfix item-row">
+                            <i class="fa pull-left"></i><strong class="pull-left">Receiver安全</strong>
+                            {% if e_bro %}
+                            <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">危险</span>
+                            {% else %}
+                            <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">安全</span>
+                            {% endif %}
+                        </div>
+                        <div class="box-body safety-details">
+                            导出的Receiver组件可造成信息泄露，拒绝服务攻击等。
+                        </div>
+                    </li>
+                    <li class="clearfix pd10">
+                        <div class="clearfix item-row">
+                            <i class="fa pull-left"></i><strong class="pull-left">Service安全</strong>
+                            {% if e_ser %}
+                            <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">危险</span>
+                            {% else %}
+                            <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">安全</span>
+                            {% endif %}
+                        </div>
+                        <div class="box-body safety-details">
+                            Service存在的漏洞主要包括：权限提升、拒绝服务攻击。没有声明任何权限的应用即可在没有任何提示的情况下启动该服务，如果此服务被设置为导出，其他应用便可通过
+                            使用此服务进行提权等操作
+                        </div>
+                    </li>
+                    <li class="clearfix pd10">
+                        <div class="clearfix item-row">
+                            <i class="fa pull-left"></i><strong class="pull-left">ContentProvider安全</strong>
+                            {% if e_cnt %}
+                            <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">危险</span>
+                            {% else %}
+                            <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">安全</span>
+                            {% endif %}
+                        </div>
+                        <div class="box-body safety-details">
+                            Content Provider会导致local sql注入、文件遍历等漏洞，造成应用用户的信息泄露。
+                        </div>
+                    </li>
+                    <li class="clearfix pd10">
+                        <div class="clearfix item-row">
+                            <i class="fa pull-left"></i><strong class="pull-left">Intent安全</strong>
+                            <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">手工检测</span>
+                        </div>
+                        <div class="box-body safety-details">
+                            itent scheme URLs可以通过解析特定格式的URL直接向系统发送意图，导致自身的未导出组件被调用，隐私信息泄露。Itent隐式调用发送的意图可能被第三方劫持，如果发送的
+                            Itent包含隐私信息，则会导致内部隐私数据的泄露。
+                        </div>
+                    </li>
+                    <li class="clearfix pd10">
+                        <div class="clearfix item-row">
+                            <i class="fa pull-left"></i><strong class="pull-left">WebView安全</strong>
+                            {% if webview == True %}
+                            <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">危险</span>
+                            {% else %}
+                            <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">安全</span>
+                            {% endif %}
+                        </div>
+                        <div class="box-body safety-details">
+                            利用android的webView组件中的addJavascriptInterface接口函数，可以实现本地java与js之间交互，但是在安卓4.2以下的系统中，这种方案却给我们的应用带来了很大的安全风险。攻击者如果在页面执行一些非法的JS（诱导用户打开一些钓鱼网站以进 入风险页面），通过远程代码执行，反弹拿到用户手机的shell权限。接下来攻击者就可以在后台默默安装木马，完全控制用户的手机。另外，android webview 组件包含3个隐藏的系统接口：“accessibility”、“accessibilityTraversal”以及“searchBoxJavaBridge_”，同样会造成远程代码执行。
+                        </div>
+                    </li>
+                    <li class="clearfix pd10">
+                        <div class="clearfix item-row">
+                            <i class="fa pull-left"></i><strong class="pull-left">模拟器检测</strong>
+                            <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">手工检测</span>
+                        </div>
+                        <div class="box-body safety-details">
+                            模拟器具有经济成本低、高度可定制、易于开发、容易部署等优点，攻击者可以通过自己修改定制特定的模拟器来达到监控应用关键函数、获取应用敏感数据，破解应用的目的。为了增加破解阻力，应用中应该进行模拟器检测，添加反模拟器运行代码。
+                        </div>
+                    </li>
+                    <li class="clearfix pd10">
+                        <div class="clearfix item-row">
+                            <i class="fa pull-left"></i><strong class="pull-left">登录涉及缺陷，存在被暴力破解风险</strong>
+                            <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">手工检测</span>
+                        </div>
+                        <div class="box-body safety-details">
+                            用户登录过程中,未对同一用户的登录失败次数做限制,导致存在被暴力破解的风险。
+                        </div>
+                    </li>
+                    <li class="clearfix pd10">
+                        <div class="clearfix item-row">
+                            <i class="fa pull-left"></i><strong class="pull-left">利用业务逻辑缺陷制作短信炸弹</strong>
+                            <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">手工检测</span>
+                        </div>
+                        <div class="box-body safety-details">
+                            用户在需要短信验证时，代码中存在逻辑设计缺陷，可使攻击者利用此缺陷造成对指定手机号的短信炸弹。
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="box box-danger">
+                <div class="box-header with-border">
+                    <h3 class="box-title">
+                        <i class="fa fa-code"></i> 源码安全检测
+                    </h3>
+                    <p class="text-muted mt10">
+                        主要进行，源码是否有签名、完整性的校验，遭 反编译后泄漏、dex和so文件的隐藏加固，以及 硬编码等风险检测。
+                    </p>
+                </div>
+                <ul class="box-body item-list">
+                    <li class="clearfix pd10">
+
+                        <div class="clearfix item-row">
+                            <i class="fa pull-left"></i><strong class="pull-left">Dex保护</strong>
+                            <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">手工检测</span>
+                        </div>
+                        <div class="box-body safety-details">
+                            Dex文件未保护则应用可被重打包插入恶意代码。
+                        </div>
+                    </li>
+                    <li class="clearfix pd10">
+                        <div class="clearfix item-row">
+                            <i class="fa pull-left"></i><strong class="pull-left">代码混淆保护</strong>
+                            {% if obfus == "False" %}
+                            <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">危险</span>
+                            {% else %}
+                            <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">安全</span>
+                            {% endif %}
+                        </div>
+                        <div class="box-body safety-details">
+                            代码中未调用java混淆保护api，代码可直接被反编译为明文。
+                        </div>
+                    </li>
+                    <li class="clearfix pd10">
+                    <div class="clearfix item-row">
+                    <i class="fa pull-left"></i><strong class="pull-left">可调试安全</strong>
+                    {% if debug == True %}
+                    <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">危险</span>
+                    {% else %}
+                    <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">安全</span>
+                    {% endif %}
+                </div>
+                <div class="box-body safety-details">
+                     在AndroidManifest中将Debugable选项设置为true，则攻击者可直接调试应用。
+                </div>
+            </li>
+            <li class="clearfix pd10">
+                <div class="clearfix item-row">
+                    <i class="fa pull-left"></i><strong class="pull-left">可备份安全</strong>
+                    {% if backup == True %}
+                    <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">一般</span>
+                    {% else %}
+                    <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">安全</span>
+                    {% endif %}
+                </div>
+                <div class="box-body safety-details">
+                    AndroidManifest配置文件中如果未显示的配置allowBackup为false，则可通过备份数据恢复应用，造成用户信息泄露。
+                </div>
+            </li>
+            <li class="clearfix pd10">
+                <div class="clearfix item-row">
+                    <i class="fa pull-left"></i><strong class="pull-left">硬编码安全</strong>
+                    {% if hardcode == True %}
+                    <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">危险</span>
+                    {% else %}
+                    <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">安全</span>
+                    {% endif %}
+                </div>
+                <div class="box-body safety-details">
+                    源代码中存在硬编码数据，可能造成加密密钥等敏感信息泄露。
+                </div>
+            </li>
+                    <li class="clearfix pd10">
+
+                        <div class="clearfix item-row">
+                            <i class="fa pull-left"></i><strong class="pull-left">代码加密保护</strong>
+                            {% if crypto == "False" %}
+                            <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">危险</span>
+                            {% else %}
+                            <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">安全</span>
+                            {% endif %}
+                        </div>
+                        <div class="box-body safety-details">
+                            代码中未调用java加密api，代码可直接被反编译为明文。
+                        </div>
+                    </li>
+                    <li class="clearfix pd10">
+                        <div class="clearfix item-row">
+                            <i class="fa pull-left"></i><strong class="pull-left">SO保护</strong>
+                            <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">手工检测</span>
+                        </div>
+                        <div class="box-body safety-details">
+                            Native so文件中实现较为高级的数据加密，反调试等功能，若So文件未保护，则可能被攻击者对应用so文件具体函数功能进行逆向分析。
+                        </div>
+                    </li>
+                    </li>
+                    <li class="clearfix pd10">
+                        <div class="clearfix item-row">
+                            <i class="fa pull-left"></i><strong class="pull-left">异常处理</strong>
+                            <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">手工检测</span>
+                        </div>
+                        <div class="box-body safety-details">
+                            若代码中未对异常进行处理，则容易导致应用崩溃，类似于DDOS。
+                        </div>
+                    </li>
+                    <li class="clearfix pd10">
+                        <div class="clearfix item-row">
+                            <i class="fa pull-left"></i><strong class="pull-left">权限管理</strong>
+                            <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">危险</span>
+                        </div>
+                        <div class="box-body safety-details">
+                            若未对权限进行严格控制，则容易导致其他应用通过攻击此应用达到权限提升的目的。
+                        </div>
+                    </li>
+                    <li class="clearfix pd10">
+                        <div class="clearfix item-row">
+                            <i class="fa pull-left"></i><strong class="pull-left">动态调试</strong>
+                            {% if debug == True %}
+                            <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">危险</span>
+                            {% else %}
+                            <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">安全</span>
+                            {% endif %}
+                        </div>
+                        <div class="box-body safety-details">
+                            如果应用设置为可调试，则攻击者可直接通过调试应用而获取到核心解密函数等敏感信息加密方式。
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h3 class="box-title">
+                        <i class="fa fa-bar-chart"></i> 数据安全检测
+                    </h3>
+                    <p class="text-muted mt10">
+                        针对应用本地存储数据以及涉及用户交互的输入输出，进行窃取和非法访问的检测，检测协议上会话是否安全加密、证书验证以及能否被重放攻击，输出信息是否能为渗透破解提供有效数据等检测。
+                    </p>
+                </div>
+                <ul class="box-body item-list">
+                    <li class="pd10">
+                        <div class="clearfix item-row">
+                            <i class="fa pull-left"></i><strong class="pull-left">明文传输用户名、密码等敏感信息</strong>
+                            <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">手工检测</span>
+                        </div>
+                        <div class="box-body safety-details">
+                            <span>用户登录过程中,在与服务器端交互时明文传输用户名、密码或者验证码等,可导致用户敏感信息泄露。</span>
+
+                        </div>
+                    </li>
+
+
+                    <li class="clearfix pd10">
+                        <div class="clearfix item-row">
+                            <i class="fa pull-left"></i><strong class="pull-left">Web表单设计缺陷,存在SQL注入漏洞</strong>
+                            <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">手工检测</span>
+                        </div>
+                        <div class="box-body safety-details">
+                            开发过程中未对特殊字符进行过滤,攻击者可以通过把 SQL 命令插入到 Web 表单提交或者输入域名或者页面请求的查询字符串,最终达到欺骗 服务器执行恶意的 SQL 命令的目的,这样攻击者就能够对内部数据库进 行增删改操作。
+                        </div>
+                    </li>
+                    <li class="clearfix pd10">
+
+                        <div class="clearfix item-row">
+                            <i class="fa pull-left"></i><strong class="pull-left">不安全的本地存储</strong>
+                            <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">手工检测</span>
+                        </div>
+                        <div class="box-body safety-details">
+                            安卓开发者使用多种方法将数据存储在安卓应用中,而存储在本地的数据文件如果未加密,易造成敏感信息泄漏。
+                        </div>
+                    </li>
+                    <li class="clearfix pd10">
+                        <div class="clearfix item-row">
+                            <i class="fa pull-left"></i><strong class="pull-left">后台地址泄露，导致服务器可控</strong>
+                            <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">手工检测</span>
+                        </div>
+                        <div class="box-body safety-details">
+                            在使用 BurpSuite 等工具对应用进行监听的过程中,发现后台服务器地址。对后台服务器进行测试,若后台服务器存在漏洞,则可控制后台服 务器。
+                        </div>
+                    </li>
+                    <li class="clearfix pd10">
+                        <div class="clearfix item-row">
+                            <i class="fa pull-left"></i><strong class="pull-left">传输数据可修改，造成越权访问</strong>
+                            <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">手工检测</span>
+                        </div>
+                        <div class="box-body safety-details">
+                            登录一般用户，对访问管理员模块时或在访问个人信息模块时对关键信息进行替换,可越权访问管理员应用模块或其他用户的相应敏感信息。
+                        </div>
+                    </li>
+                    <li class="clearfix pd10">
+                        <div class="clearfix item-row">
+                            <i class="fa pull-left"></i><strong class="pull-left">未使用有效的 token 机制,导致可以绕过鉴权</strong>
+                            <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">手工检测</span>
+                        </div>
+                        <div class="box-body safety-details">
+                            如果被测应用没有使用有效的 token 机制,对登陆响应中的服务器返回 的鉴权信息进行修改,即可绕过服务器鉴权,直接访问系统内部信息。
+                        </div>
+                    </li>
+                    <li class="clearfix pd10">
+                        <div class="clearfix item-row">
+                            <i class="fa pull-left"></i><strong class="pull-left">边道日志信息移除安全</strong>
+                            {% if log == True %}
+                            <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">危险</span>
+                            {% else %}
+                            <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">安全</span>
+                            {% endif %}
+                        </div>
+                        <div class="box-body safety-details">
+                            当 APP 处理用户或其它数据源输入的数据时,可能会把数据放在不安全 的位置,容易导致边信道被攻击者利用造成信息泄露。开发者在开发应用是可能将重要数据放在日志记录中进行
+                            测试，发布时未删除相应调试日志数据，造成重要数据泄露。
+                        </div>
+                    </li>
+                    <li class="clearfix pd10">
+                        <div class="clearfix item-row">
+                            <i class="fa pull-left"></i><strong class="pull-left">关键页面存在钓鱼劫持风险，导致用户敏感信息泄露</strong>
+                            <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">手工检测</span>
+                        </div>
+                        <div class="box-body safety-details">
+                            导出的组件可以被第三方app任意调用，如果对关键页面未做较强的权限管理，则容易被钓鱼劫持。
+                        </div>
+                    </li>
+                    <li class="clearfix pd10">
+                        <div class="clearfix item-row">
+                            <i class="fa pull-left"></i><strong class="pull-left">使用调试证书发布应用</strong>
+                          {% if issued == "good" %}
+                            <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">安全</span>
+                          {% else %}
+                          <i class="fa fa-angle-down pull-right"></i><span class="pull-right label-data">危险</span>
+                          {% endif %}
+                        </div>
+                        <div class="box-body safety-details">
+                            使用调试证书发布应用，可导致应用被攻击者进行动态调试，泄露敏感信息及实现核心功能方法。
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================= -->
+
+
+<section id="permissions">
+  <h3 class="page-header">安全分析详情</h3>
+  <!-- /.box -->
+
+          <div class="box">
+          <div class="box-header">
+             <!-- /.box-header -->
+              <h3 class="box-title"><i class="fa fa-align-justify"></i> 权限详情</h3>
+            </div>
+  <div class="box-body no-padding">
+             <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>权限</th>
+                                                <th>状态</th>
+                                                <th>详细解释 </th>
+                        <th>描述</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                    {{ permissions | safe}}
+                    </tbody>
+                    </table>
+
+                            </div>
+
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+</section>
+
+<section id="certificate">
+  <h2 class="page-header"></h2>
+   <div class="box-header">
+             <!-- /.box-header -->
+              <h3 class="box-title"><i class="fa fa-certificate"></i> 签名证书详情</h3>
+            </div>
+ <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">
+{{ certinfo | safe}}
+</code>
+{% if issued == "good" %}
+<strong>证书状态: </strong><span class="label label-success">Good</span>
+{% else %}
+<strong>证书状态: </strong><span class="label label-danger">Bad</span>
+<strong>描述: </strong>App通过'Android Debug'证书进行签名.
+正式发行版本的应用不能通过调试证书进行签名.
+{% endif %}
+</pre>
+</section>
+
+
+<section id="android-api">
+   <h2 class="page-header"></h2>
+  <!-- /.box -->
+
+          <div class="box">
+          <div class="box-header">
+             <!-- /.box-header -->
+              <h3 class="box-title"><i class="fa  fa-dot-circle-o"></i> Android API调用分析详情</h3>
+            </div>
+ <div class="box-body no-padding">
+          <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-striped">
+                                        <thead>
+                                            <tr>
+
+                                                <th width = 40%>API              </th>
+                        <th>文件</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                    {{ api | safe}}
+                    </tbody>
+                    </table>
+
+                            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+</section>
+
+
+<!-- ============================================================= -->
+
+<section id="manifest">
+  <h2 class="page-header"></h2>
+   <!-- /.box -->
+
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title"><i class="fa fa-search"></i> 配置安全详情</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+              <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th width = 30%>ISSUE</th>
+                                                <th>威胁等级</th>
+                        <th>描述</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                    {{ manifest | safe}}
+                    </tbody>
+                    </table>
+
+                            </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+</section>
+
+
+<!-- ============================================================= -->
+
+<section id="code">
+   <h2 class="page-header"></h2>
+   <!-- /.box -->
+
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title"><i class="fa  fa-code"></i> 代码安全详情</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+             <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th width = 30%>ISSUE</th>
+                                                <th width = 10%>威胁等级</th>
+                        <th>文件</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                    {{ dang | safe}}
+                    </tbody>
+                    </table>
+
+                            </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+</section>
+
+
+<!-- ============================================================= -->
+
+<section id="file">
+  <h2 class="page-header"></h2>
+    <!-- /.box -->
+
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title"><i class="fa fa-file-text-o"></i> 文件详情</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+            <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-striped">
+                                              <thead>
+                                            <tr>
+                                                <th width = 30%>ISSUE</th>
+                                                <th>文件</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                  {{ certz | safe}}
+                    </tbody>
+                    </table>
+
+                            </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+</section>
+
+<section id="nature1">
+  <h2 class="page-header"></h2>
+<div class="row">
+    <div class="col-sm-4">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">其他信息</h3>
+          <span class="label label-primary pull-right"><i class="glyphicon glyphicon-tasks"></i></span>
+        </div><!-- /.box-header -->
+        <div class="box-body">
+         <div class="list-group">
+                  <p>
+                  <span class="label label-primary" >Native原生代码</span>
+                  <a href="#" data-toggle="tooltip" title="如果应用通过JNI bridge加载原生代码则为true.">{{ native }}</a>
+                  </p>
+                  <p>
+                  <span class="label label-primary" >动态加载</span>
+                  <a href="#" data-toggle="tooltip" title="如果应用在运行时动态加载代码则为true.">{{ dynamic }}</a>
+                  </p>
+                  <p>
+                  <span class="label label-primary" >反射调用</span>
+                  <a href="#" data-toggle="tooltip" title="如果应用使用Java反射调用API则为true.">{{ reflection }}</a>
+                  </p>
+                  <p>
+                  <span class="label label-primary" >加密</span>
+                  <a href="#" data-toggle="tooltip" title="如果应用使用Java加密API则为true.">{{ crypto }}</a>
+                  </p>
+                  <p>
+                  <span class="label label-primary" >混淆</span>
+                  <a href="#" data-toggle="tooltip" title="如果应用使用Java混淆API则为true.">{{ obfus }}</a>
+                  </p>
+            </div>
+          </div><!-- /.box-body -->
+      </div><!-- /.box -->
+    </div><!-- /.col -->
+    </div>
+    </section>
+
+
+<!-- ============================================================= -->
+
+<section id="url">
+  <h2 class="page-header"></h2>
+       <!-- /.box -->
+
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title"><i class="glyphicon glyphicon-globe"></i> URLs</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+              <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-striped">
+                  {% if urls|length > 1 %}
+                  <thead>
+                  <tr>
+                     <th>URL</th>
+                     <th>文件</th>
+                  </tr>
+                 </thead>
+                    {% endif %}
+                 <tbody>
+                                        <tbody>
+
+                  {{ urls | safe}}
+                    </tbody>
+                    </table>
+
+                            </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+  </section>
+
+
+<!-- ============================================================= -->
+
+<section id="domain">
+  <h2 class="page-header"></h2>
+       <!-- /.box -->
+
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title"><i class="glyphicon glyphicon-screenshot"></i> 恶意域名检测</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover table-striped">
+                  {% if urls|length > 1 %}
+                  <thead>
+                  <tr>
+                     <th>Domain</th>
+                     <th>状态</th>
+                  </tr>
+                 </thead>
+                  {% endif %}
+                 <tbody>
+
+                  {% for domain, details in domains.items %}
+                  <tr><td>{{domain}}</td><td>
+
+                    {% if details|key:"bad" == "yes" %}
+                    <span class="label label-danger">malware</span></br>
+<pre>
+<strong>URL: </strong>{{details|key:"domain_or_url"}}
+<strong>IP: </strong><span class="label label-danger">{{details|key:"ip"}}</span>
+<strong>Description: </strong>{{details|key:"desc"}}
+</pre>
+                  {% else %}
+                    <span class="label label-success">good</span></br>
+                  {% endif %}
+
+
+                  </td> </tr>
+                  {% endfor %}
+
+                    </tbody>
+                    </table>
+
+             </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+  </section>
+
+
+<!-- ============================================================= -->
+
+<section id="email">
+  <h2 class="page-header"></h2>
+     <!-- /.box -->
+
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title"><i class="glyphicon glyphicon-envelope"></i> Emails</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+              <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-striped">
+                 {% if emails|length > 1 %}
+                  <thead>
+                  <tr>
+                     <th>Email</th>
+                     <th>文件</th>
+                  </tr>
+                 </thead>
+                 {% endif %}
+                 <tbody>
+                                        <tbody>
+
+                  {{ emails | safe}}
+                    </tbody>
+                    </table>
+
+                            </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+</section>
+
+
+<!-- ============================================================= -->
+
+<section id="string">
+  <h2 class="page-header"></h2>
+       <!-- /.box -->
+
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title"><i class="glyphicon glyphicon-sort-by-alphabet-alt"></i> 字符串</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+          <div class="list-group">
+                  <p>
+
+                    {% for val in strings %}
+
+                     {{ val }}<br>
+
+                    {% endfor %}
+
+
+                  </p>
+                                </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+</section>
+
+
+<!-- ============================================================= -->
+
+<section id="activities">
+  <h2 class="page-header"></h2>
+   <!-- /.box -->
+
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title"><i class="fa fa-language"></i> Activities</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+            <div class="list-group">
+                  <p>
+                {% for act in activities %}
+                  {{ act}} <br>
+                {% endfor %}
+
+                  </p>
+                  </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+</section>
+
+
+<!-- ============================================================= -->
+
+<section id="services">
+  <h2 class="page-header"></h2>
+  <!-- /.box -->
+
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title"><i class="fa fa-gears"></i> Services</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+          <div class="list-group">
+                  <p>
+                {% for srv in services %}
+                  {{ srv}} <br>
+                {% endfor %}
+
+                  </p>
+                                </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+</section>
+
+<!-- ============================================================= -->
+
+<section id="receivers">
+  <h2 class="page-header"></h2>
+ <!-- /.box -->
+
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title"><i class="fa fa-sort-amount-desc"></i> Broadcast Receivers</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+            <div class="list-group">
+                  <p>
+                {% for rcv in receivers %}
+                  {{ rcv}} <br>
+                {% endfor %}
+
+                  </p>
+                                </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+</section>
+
+<!-- ============================================================= -->
+
+<section id="providers">
+  <h2 class="page-header"></h2>
+
+   <!-- /.box -->
+
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title"><i class="fa fa-database"></i> Content Providers</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+           <div class="list-group">
+                  <p>
+                {% for prv in providers %}
+                  {{ prv}} <br>
+                {% endfor %}
+
+                  </p>
+                                </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+</section>
+
+<!-- ============================================================= -->
+
+<section id="libraries">
+  <h2 class="page-header"></h2>
+  <!-- /.box -->
+
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title"><i class="glyphicon glyphicon-chevron-down"></i> Libraries</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+            <div class="list-group">
+                  <p>
+                {% for lib in libraries %}
+                  {{ lib }} <br>
+                {% endfor %}
+
+                  </p>
+                                </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+</section>
+
+<section id="files">
+  <h2 class="page-header"></h2>
+  <!-- /.box -->
+
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title"><i class="fa fa-files-o"></i>文件</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+           <div class="list-group">
+                  <p>
+                {% for file in files %}
+                  {{ file}} <br>
+                {% endfor %}
+
+                  </p>
+                                </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+</section>
+        </div><!-- /.content -->
+      </div><!-- /.content-wrapper -->
+
+
+{% endblock %}
+</html>

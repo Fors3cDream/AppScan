@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{name}}APP安全评测报告</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/static/favicon.ico">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="pdfBody">
+    <!--
+        安全等级  高中低
+        合格 不合格
+        手工检测高亮
+    -->
+    <div class="pdfWrap">
+        <div class="pdfContainer">
+            <h1 class="logo">
+            <!--<img src="/static/img/aocheng.jpg"/> -->
+            </h1>
+            <div class="cover">
+                <h1>
+                    {{name}}-APP安全检测报告
+                </h1>
+                <h3>
+                    (Android版本)
+                </h3>
+                <div class="number">
+                    <span class="">
+                        报告编号：<em>SCAC-APP-{{name}}</em>
+                        <div class="info">
+                            <p>
+                                检测方式：&nbsp;&nbsp;自动分析
+                            </p>
+                            <p>
+                                检测单位：&nbsp;&nbsp;四川奥诚科技有限责任公司
+                            </p>
+                            <p>
+                                检测日期：&nbsp;&nbsp;{{date}}
+                            </p>
+                            <p>
+                                保密等级：&nbsp;&nbsp;高
+                                <br>
+                            </p>
+                        </div>
+                    </span>
+                </div>
+
+
+            </div>
+            <div class="tableWrap">
+              <br>
+                <h3 class="titleLarge">1、文件基本信息</h3>
+                <table class="tableItem">
+                    <tr>
+                        <th>
+                            文件名
+                        </th>
+                        <td>
+                            {{name}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            文件大小
+                        </th>
+                        <td>
+                            {{size}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th >
+                            文件MD5值
+                        </th>
+                        <td>
+                            {{md5}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            文件SHA1值
+                        </th>
+                        <td>
+                          {{sha1}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            应用包名
+                        </th>
+                        <td>
+                          {{packagename}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            应用版本
+                        </th>
+                        <td>
+                          {{androvername}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Main Activity
+                        </th>
+                        <td>
+                          {{mainactivity}}
+                        </td>
+                    </tr>
+                </table>
+                <h3 class="titleLarge">2、分析结果</h3>
+                <h4 class="titleSmall">2.1、明文传输用户名、密码和验证码等敏感信息</h4>
+                <table class="tableItem">
+                    <tr>
+                        <th>
+                            问题描述：
+                        </th>
+                        <td>
+                            用户登录过程中,在与服务器端交互时明文传输用户名、密码或者验证码等,可导致用户敏感信息泄露。
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            威胁等级：
+                        </th>
+                        <td>
+                            <b class="tipsRed">高</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            检测结果：
+                        </th>
+                        <td>
+                            <b class="tipsOrange">需手工检测</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            整改建议：
+                        </th>
+                        <td>
+                            在被测应用与服务器交互过程中,对用户名、密码和验证码等敏感信息进行加密传输。
+                        </td>
+                    </tr>
+                </table>
+                <h4 class="titleSmall">2.2、不安全的本地存储</h4>
+                <table class="tableItem">
+                    <tr>
+                        <th>
+                            问题描述：
+                        </th>
+                        <td>
+                            安卓开发者使用多种方法将数据存储在安卓应用中,而存储在本地的数据文件如果未加密,易造成敏感信息泄漏。
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            威胁等级：
+                        </th>
+                        <td>
+                            <b class="tipsRed">高</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            检测结果：
+                        </th>
+                        <td>
+                            <b class="tipsOrange">需手工检测</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            整改建议：
+                        </th>
+                        <td>
+                            对存储在本地的数据文件进行加密。
+                        </td>
+                    </tr>
+                </table>
+
+                <h4 class="titleSmall">2.3、泄露后台服务器地址，导致服务器可控</h4>
+                <table class="tableItem">
+                    <tr>
+                        <th>
+                            问题描述：
+                        </th>
+                        <td>
+                            在使用代理工具对应用进行监听的过程中,发现后台服务器地 址。对后台服务器进行测试,若后台服务器存在漏洞,则可控制后台服 务器。
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            威胁等级：
+                        </th>
+                        <td>
+                            <b class="tipsRed">高</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            检测结果：
+                        </th>
+                        <td>
+                            <b class="tipsOrange">需手工检测</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            整改建议：
+                        </th>
+                        <td>
+                            客户端无整改建议，需服务端整改。
+                        </td>
+                    </tr>
+                </table>
+                <h4 class="titleSmall">2.4、边道信息泄露</h4>
+                <table class="tableItem">
+                    <tr>
+                        <th>
+                            问题描述：
+                        </th>
+                        <td>
+                            当 APP 处理用户或其它数据源输入的数据时,可能会把数据放在不安全 的位置,容易导致边信道被攻击者利用造成信息泄露，使用系统日志进行调试，对关键信息进行记录，容易在发布后未清理日志信息，造成信息泄露。
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            威胁等级：
+                        </th>
+                        <td>
+                            <b class='tipsRed'>高</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            检测结果：
+                        </th>
+                        <td>
+                          {% if log == True %}
+                            <b class = 'tipsRed'>不合格</b>
+                          {% else %}
+                          <b class = 'tipsGreen'>合格</b>
+                          {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            整改建议：
+                        </th>
+                        <td>
+                            应用发布时清楚所有日志信息，存储数据到安全的位置。
+                        </td>
+                    </tr>
+                </table>
+
+                <h4 class="titleSmall">2.5、未使用有效的token机制，导致可以绕过鉴权</h4>
+                <table class="tableItem">
+                    <tr>
+                        <th>
+                            问题描述：
+                        </th>
+                        <td>
+                            如果被测应用没有使用有效的 token 机制,对登陆响应中的服务器返回 的鉴权信息进行修改,即可绕过服务器鉴权,直接访问系统内部信息。
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            威胁等级：
+                        </th>
+                        <td>
+                            <b class = 'tipsRed'>高</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            检测结果：
+                        </th>
+                        <td>
+                            <b class = 'tipsOrange'>需手工检测</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            整改建议：
+                        </th>
+                        <td>
+                            对用户使用有效的token机制进行权限管理。
+                        </td>
+                    </tr>
+                </table>
+                <h4 class="titleSmall">2.6、传输数据可修改,造成越权访问</h4>
+                <table class="tableItem">
+                    <tr>
+                        <th>
+                            问题描述：
+                        </th>
+                        <td>
+                            利用已有的用户名密码登录应用,当应用访问某一模块时,使用代理工具进行监听,对访问该模块时的关键信息进行替换,则 可越权访问他人的应用模块。
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            威胁等级：
+                        </th>
+                        <td>
+                            <b class = 'tipsRed'>高</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            检测结果：
+                        </th>
+                        <td>
+                            <b class = 'tipsOrange'>需手工检测</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            整改建议：
+                        </th>
+                        <td>
+                            在服务端对用户使用有效的校验机制进行权限管理。
+                        </td>
+                    </tr>
+                </table>
+                <h4 class="titleSmall">2.7、登录设计存在缺陷，存在被暴力破解风险</h4>
+                <table class="tableItem">
+                    <tr>
+                        <th>
+                            问题描述：
+                        </th>
+                        <td>
+                            用户登录过程中,未对同一用户的登录失败次数做限制,导致存在被暴力破解的风险。
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            威胁等级：
+                        </th>
+                        <td>
+                            <b class = 'tipsOrange'>中</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            检测结果：
+                        </th>
+                        <td>
+                            <b class='tipsOrange'>需手工检测</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            整改建议：
+                        </th>
+                        <td>
+                            在服务端对用户登录次数进行严格限制。
+                        </td>
+                    </tr>
+                </table>
+                <h4 class="titleSmall">2.8、利用业务逻辑缺陷制作短信炸弹</h4>
+                <table class="tableItem">
+                    <tr>
+                        <th>
+                            问题描述：
+                        </th>
+                        <td>
+                            如果在用户短信验证过程中存在逻辑设计缺陷,可对指定手机号码随意发送短信,造成短信炸弹攻击,可能造成用户投诉或恶意软件传播等。
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            威胁等级：
+                        </th>
+                        <td>
+                            <b class='tipsRed'>高</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            检测结果：
+                        </th>
+                        <td>
+                            <b class='tipsOrange'>需手工检测</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            整改建议：
+                        </th>
+                        <td>
+                            在服务端对同一手机号一段时间内验证次数进行严格限制。
+                        </td>
+                    </tr>
+                </table>
+                <h4 class="titleSmall">2.9、关键页面存在钓鱼劫持风险，导致用户信息泄露</h4>
+                <table class="tableItem">
+                    <tr>
+                        <th>
+                            问题描述：
+                        </th>
+                        <td>
+                            劫持钓鱼,指恶意应用针对正常应用的特定界面进行仿冒替换,诱骗用户在仿冒界面操作,达到钓鱼目的。此类攻击,多针对 APP 的鉴权或支 付场景,诱骗用户输入关键隐私信息,如账号、登陆密码和支付密码等, 达到隐私窃取的目的。
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            威胁等级：
+                        </th>
+                        <td>
+                            <b class='tipsRed'>高</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            检测结果：
+                        </th>
+                        <td>
+                            <b class='tipsOrange'>需手工检测</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            整改建议：
+                        </th>
+                        <td>
+                            <ol>
+                                <li>
+                                    当应用程序具有支付等敏感页面时,通过获取栈顶 Activity,判断当前运行的 是否本程序,一旦发现应用被切换(可能被劫持),给予用户 示以防范钓鱼程序的欺诈。建议在关键类的 onpause 中实现钓鱼劫持防护功能。
+                                </li>
+                                <li>
+                                    使用 HTML5 架构或 android+HTML5 混合开发,实现登陆、支付等关键页面,降低被劫持的风险。
+                                </li>
+                            </ol>
+                        </td>
+                    </tr>
+                </table>
+                <h4 class="titleSmall">2.10、WebView漏洞</h4>
+                <table class="tableItem">
+                    <tr>
+                        <th>
+                            问题描述：
+                        </th>
+                        <td>
+                            在 webView 下有一个非常特殊的接口函数 addJavascriptInterface,能实 现本地 java 和 js 的交互。被测应用中存在 WebView 漏洞,没有对注册 JAVA 类的方法调用进行限制,导致攻击者利用 addJavascriptInterface 这 个接口函数穿透 webkit 控制 android 本机。
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            威胁等级：
+                        </th>
+                        <td>
+                            <b class='tipsRed'>高</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            检测结果：
+                        </th>
+                        <td>
+                          {% if webview == True %}
+                            <b class='tipsRed'>不合格</b>
+                            {% else %}
+                            <b class='tipsGreen'>合格</b>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            整改建议：
+                        </th>
+                        <td>
+                            避免直接使用addJavascriptInterface等容易直接产生漏洞的函数，使用其他方式代替。
+                        </td>
+                    </tr>
+                </table>
+                <h4 class="titleSmall">2.11、Web表单设计缺陷，存在SQL注入漏洞</h4>
+                <table class="tableItem">
+                    <tr>
+                        <th>
+                            问题描述：
+                        </th>
+                        <td>
+                            开发过程中未对特殊字符进行过滤,攻击者可以通过把 SQL 命令插入到 Web 表单 交或者输入域名或者页面请求的查询字符串,最终达到欺骗 服务器执行恶意的 SQL 命令的目的,这样攻击者就能够对内部数据库进 行增删改操作。
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            威胁等级：
+                        </th>
+                        <td>
+                            <b class='tipsRed'>高</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            检测结果：
+                        </th>
+                        <td>
+                            <b class='tipsOrange'>需手工检测</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            整改建议：
+                        </th>
+                        <td>
+                            严格过滤用户输入数据。
+                        </td>
+                    </tr>
+                </table>
+                <h4 class="titleSmall">2.12、组件Content Provider配置错误，导致数据泄露</h4>
+                <table class="tableItem">
+                    <tr>
+                        <th>
+                            问题描述：
+                        </th>
+                        <td>
+                            Content Provider 是安卓应用组件,以表格的形式把数据展现给外部的应 用。每个 Content Provider 都对应一个以”content://”开头的特定 URI, 任何应用都可以通过这个URI操作Content Provider应用的数据库。如果应用对权限控制不当就会造成信息泄露。
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            威胁等级：
+                        </th>
+                        <td>
+                            <b class='tipsRed'>高</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            检测结果：
+                        </th>
+                        <td>
+                          {% if e_cnt %}
+                            <b class='tipsRed'>不合格</b>
+                            {% else %}
+                            <b class='tipsGreen'>合格</b>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            整改建议：
+                        </th>
+                        <td>
+                            严格控制Content权限。
+                        </td>
+                    </tr>
+                </table>
+                <h4 class="titleSmall">2.13、组件Activity配置错误</h4>
+                <table class="tableItem">
+                    <tr>
+                        <th>
+                            问题描述：
+                        </th>
+                        <td>
+                            Activity 是安卓应用组件, 供与用户进行交互的界面。如果应用对权限 控制不当,可以绕过登录界面直接显示该界面。
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            威胁等级：
+                        </th>
+                        <td>
+                            <b class='tipsRed'>高</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            检测结果：
+                        </th>
+                        <td>
+                          {% if e_act %}
+                            <b class='tipsRed'>不合格</b>
+                            {% else %}
+                            <b class='tipsGreen'>合格</b>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            整改建议：
+                        </th>
+                        <td>
+                            对重要隐私Activity设置为未导出，对于Activity启动Itent进行严格的权限控制。
+                        </td>
+                    </tr>
+                </table>
+                <h4 class="titleSmall">2.14、组件Service 配置错误，导致非法权限提升</h4>
+                <table class="tableItem">
+                    <tr>
+                        <th>
+                            问题描述：
+                        </th>
+                        <td>
+                            Service 是 Android 中四大组件进行后台作业的主要组件,如果被测应用 对权限控制不当,导致其他应用可以启动被测应用的 Service。
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            威胁等级：
+                        </th>
+                        <td>
+                            <b class='tipsRed'>高</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            检测结果：
+                        </th>
+                        <td>
+                          {% if e_ser %}
+                            <b class='tipsRed'>不合格</b>
+                            {% else %}
+                            <b class='tipsGreen'>合格</b>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            整改建议：
+                        </th>
+                        <td>
+                            在被测应用的 AndroidManifest.xml 文件中,设置 Service 的 android:exported 属性为 false 或者通过设置自定义权限来限制对 Service 的访问。
+                        </td>
+                    </tr>
+                </table>
+                <h4 class="titleSmall">2.15、组件Broadcast Receiver 配置错误，导致拒绝服务、非法越权</h4>
+                <table class="tableItem">
+                    <tr>
+                        <th>
+                            问题描述：
+                        </th>
+                        <td>
+                            Broadcast Receiver是Android中四大组件用于处理广播事件的组件，若存在配置不当则其他应用可以伪装发送广播从而可造成信息泄露，拒绝服务攻击等。
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            威胁等级：
+                        </th>
+                        <td>
+                            <b class='tipsRed'>高</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            检测结果：
+                        </th>
+                        <td>
+                          {% if e_bro %}
+                            <b class='tipsRed'>不合格</b>
+                            {% else %}
+                            <b class='tipsGreen'>合格</b>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            整改建议：
+                        </th>
+                        <td>
+                            在被测 应用的 AndroidManifest.xml 文件中,设置 receiver 的 android:exported 属性为 false 或者通过设置自定义权限来限制对 receiver 的访问。
+                        </td>
+                    </tr>
+                </table>
+                <h4 class="titleSmall">2.16、开启allowbackup备份权限，存在备份数据泄露风险</h4>
+                <table class="tableItem">
+                    <tr>
+                        <th>
+                            问题描述：
+                        </th>
+                        <td>
+                            被测应用的 AndroidManifest.xml 文件中 allowBackup 属性值被设置为 true,可通过 adb backup 对应用数据进行备份,在无 root 的情况下可以 导出应用中存储的所有数据,造成用户数据泄露。
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            威胁等级：
+                        </th>
+                        <td>
+                            <b class='tipsOrange'>中</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            检测结果：
+                        </th>
+                        <td>
+                          {% if backup == False %}
+                            <b class='tipsGreen'>合格</b>
+                            {% else %}
+                            <b class='tipsRed'>不合格</b>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            整改建议：
+                        </th>
+                        <td>
+                            将参数 android:allowBackup 属性设置为 false,防止数据泄漏。
+                        </td>
+                    </tr>
+                </table>
+                <h4 class="titleSmall">2.17、开启Debuggable调试权限，存在应用被调试风险</h4>
+                <table class="tableItem">
+                    <tr>
+                        <th>
+                            问题描述：
+                        </th>
+                        <td>
+                            被测应用的 AndroidManifest.xml 文件中 debuable属性值被设置为 true,攻击者可直接调试应用。
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            威胁等级：
+                        </th>
+                        <td>
+                            <b class='tipsRed'>高</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            检测结果：
+                        </th>
+                        <td>
+                          {% if debug == False %}
+                            <b class='tipsGreen'>合格</b>
+                            {% else %}
+                            <b class='tipsRed'>不合格</b>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            整改建议：
+                        </th>
+                        <td>
+                            将参数 android:allowBackup 属性设置为 false,防止数据泄漏。
+                        </td>
+                    </tr>
+                </table>
+                <h4 class="titleSmall">2.18、使用调试证书发布应用</h4>
+                <table class="tableItem">
+                    <tr>
+                        <th>
+                            问题描述：
+                        </th>
+                        <td>
+                            直接使用调试证书发布应用，可使应用被攻击者直接调试篡改。
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            威胁等级：
+                        </th>
+                        <td>
+                            <b>高</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            检测结果：
+                        </th>
+                        <td>
+                          {% if issued == "good" %}
+                            <b class='tipsGreen'>合格</b>
+                            {% else %}
+                            <b class='tipsRed'>不合格</b>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            整改建议：
+                        </th>
+                        <td>
+                            使用标准证书发布应用。
+                        </td>
+                    </tr>
+                </table>
+                <h4 class="titleSmall">2.19、应用可被重打包</h4>
+                <table class="tableItem">
+                    <tr>
+                        <th>
+                            问题描述：
+                        </th>
+                        <td>
+                            应用为进行有效的签名校验，可导致被重打包。
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            威胁等级：
+                        </th>
+                        <td>
+                            <b class='tipsRed'>高</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            检测结果：
+                        </th>
+                        <td>
+                            <b class='tipsOrange'>需手工检测</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            整改建议：
+                        </th>
+                        <td>
+                            严格进行签名校验或采用第三方加固方法加固。
+                        </td>
+                    </tr>
+                </table>
+
+                <h3 class="titleLarge">3、手工检测申请</h3>
+                <h4 class="titleSmall" style='color:#333'>此版报告为奥诚科技移动应用安全检测系统自动化分析后生成的文字版参考报告，如果需要更详细的手工分析报告，请与我们联系：</h4>
+                <p style='color:#fb7b00'><strong>
+                    地址：中国·四川·成都市锦绣路1号保利中心东3号楼1612号<br/>
+                    邮编：610041 <br/>
+                    总机：028-85241226 <br/>
+                    传真：028-85241226-806 <br/>
+                    E-mail：aocheng@scaocheng.com</strong>
+                </p>
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" class="indexHtml">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Expires" content="0">
+      <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/static/favicon.ico">
+
+    <title>奥诚移动应用安全检测系统</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/cover.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="/static/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/static/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="/static/js/dropzone.js"></script>
+    <link rel="stylesheet" href="/static/css/dropzone.css">
+  </head>
+
+  <body class="indexBody">
+
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container indexContainer">
+
+          <div class="masthead clearfix positionTop">
+              <img src="/static/img/apk_04.png" style="display:none"/>
+              <h3 class="masthead-brand"><img src="/static/img/apk_logo.jpg" alt="AoChengLogo"></h3>
+              <!--<nav>-->
+                <!--<ul class="nav masthead-nav">-->
+                  <!--<li class="active"><a href="#">Home</a></li>-->
+                  <!--<li><a href="#">Features</a></li>-->
+                  <!--<li><a href="#">Contact</a></li>-->
+                <!--</ul>-->
+              <!--</nav>-->
+          </div>
+
+          <div class="inner cover indexMain">
+            <h4 class="cover-heading">专注移动应用测试　给您的应用提供全面安全检测</h4>
+            <br/>
+            <form id="upload-widget" method="POST" action="/Upload/" class="dropzone">
+              {% csrf_token %}
+                <div class="uploadBox">
+                    <div class="loading"><img src="/static/img/apk_06.png" alt=""></div>
+                    <div class="uploadProgress">
+                        <div class="progressInner"></div>
+                    </div>
+                    <p class='uploadTips' >将您的文件拖拽到此处或点击下面按钮上传，支持.apk、.zip(源码压缩文件)格式</p>
+                </div>
+
+            </form>
+            <br/>
+            <form id="upload_form" enctype="multipart/form-data" method="post">
+              {% csrf_token %}
+              <div class="fileUpload btn btn-primary btn-lg" id="but">
+                <input type="file" name="file" id="uploadFile" placeholder="Choose File">
+                <span class="glyphicon glyphicon-cloud-upload"></span>
+                上传 &amp; 分析
+              </div>
+              <h4 id="status"></h4>
+            </form>
+          </div>
+
+          <div class="mastfoot">
+
+            <form action="/Search" method="GET">
+              <input name="md5" type="text" class="form-control" placeholder="搜索 MD5">
+            </form>
+
+            <div class="inner">
+              <h5><strong><a href="../RecentScans">近期分析文件</a> | <a href="../about">关于</a>  | <a href="../logout">退出</a></strong></h5></br>
+              <p>&copy; {% now "Y" %}  奥诚移动应用安全检测系统 {{ version }}. All Rights Reserved</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/static/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/static/js/ie10-viewport-bug-workaround.js"></script>
+    <script>
+
+      function _(el){
+        return document.getElementById(el);
+      }
+      function responseHandler (json, isbutton) {
+
+        if (json.status==='error')
+        {
+          _("status").innerHTML = json.description;
+        }
+        else if (json.status==='success')
+        {
+            analyzingStyle(json);
+
+        }
+      }
+      function analyzingStyle(json){        //分析时的样式
+          $('.loading,.uploadProgress').css('display','none');
+          $('#upload-widget').css({
+              'backgroundImage':'url("/static/img/apk_03.png")',
+              'backgroundSize':'100% auto',
+              'backgroundRepeat':'no-repeat',
+              'backgroundPosition' : 'center 30%'
+          });
+          $('<div class="glassBox"><img src="/static/img/apk_04.png" alt="glassImg" /></div>').appendTo('#upload-widget');
+
+          i=1;
+          setInterval(function () {
+              dot='';
+              for (x=1;x<=i;x++)
+              {
+                  dot+='.';
+              }
+              $(".uploadTips").html( "文件扫描中"+dot);
+              i+=1;
+              if(i==5)
+              {
+                  i=1;
+              }
+          }, 500);
+          window.location.href=window.location.href+json.url;
+      }
+      function uploadProgress(progress) {
+//          $('.dz-preview').css('display','none')
+          $('.uploadBox').css('display','block');
+          $('.progressInner').css('width',''+ progress +'%');
+      }
+      Dropzone.options.uploadWidget = {
+        paramName: 'file',
+        createImageThumbnails: false,
+        maxFilesize: 1000, // MB
+        maxFiles: 8,
+        dictDefaultMessage: "<img src='/static/img/apk_apk.png'/><img src='/static/img/apk_zip.png'/><p class='uploadTips'>将您的文件拖拽到此处或点击下面按钮上传，支持.apk、.zip(源码压缩文件)格式</p>",
+        acceptedFiles: '.apk,.ipa,.zip',
+
+        init: function() {
+          this.on('success', function( file, resp ){
+            console.log( file );
+            console.log( resp );
+            responseHandler(resp);
+          });
+          this.on('uploadprogress',function(file,progress,bytesSent){
+//            console.log(file)
+//            console.log(progress +' / '+ bytesSent)
+              uploadProgress(progress)
+          })
+        },
+
+      };
+
+
+      $(document).ready(function ()
+      {
+        $('input[type=file]').change(function ()
+        {
+          var val = $(this).val().toLowerCase();
+          var regex = new RegExp("(.*?)\.(ipa|apk|zip)$");
+          val = val.replace(/^.*[\\\/]/, '');
+          try {
+            if (!(regex.test(val)))
+            {
+              $(this).val('');
+              _('status').innerHTML = "Please upload APK/IPA/ZIP only!";
+            }
+            else
+            {
+              _('status').innerHTML = "";
+              if (_("uploadFile").files.length === 0)
+              {
+                return;
+              }
+//              _("uploadFile").style.display= "none";
+//              _("but").style.display = "none";
+                $('#uploadFile,#but').attr('disabled','disabled');
+              var file = _("uploadFile").files[0];
+//              _("progressBar").style.visibility = "visible";
+
+
+              var formdata = new FormData();
+              formdata.append("file", file);
+              var ajax = new XMLHttpRequest();
+
+              ajax.upload.addEventListener("progress", progressHandler, false);
+                  ajax.addEventListener("load", completeHandler, false);
+              ajax.addEventListener("error", errorHandler, false);
+              ajax.addEventListener("abort", abortHandler, false);
+              ajax.open("POST", "../Upload/");
+              ajax.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
+              ajax.send(formdata);
+            }
+
+          }
+          catch (e)
+          {
+            console.info("Error:" + e);
+          }
+        });
+      });
+      function progressHandler(event){
+//        console.log("Uploaded..."+Math.round(percent));
+          $('.dz-default').css('display','none');
+          var percent = Math.round((event.loaded / event.total) * 100);
+          uploadProgress(percent);
+        _("progressBar").value = Math.round(percent);
+        _("status").innerHTML = Math.round(percent)+"% Uploaded...";
+      }
+      function completeHandler(event)
+      {
+//        console.info(event)
+
+        var json= JSON.parse(event.target.responseText);
+        responseHandler(json);
+      }
+      function errorHandler(event){
+        _("status").innerHTML = "Upload Failed!";
+      }
+      function abortHandler(event){
+        _("status").innerHTML = "Upload Aborted!";
+      }
+    </script>
+  </body>
+</html>

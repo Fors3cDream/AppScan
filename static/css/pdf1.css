@@ -1,0 +1,19 @@
+@page {
+     /*margin: 3cm 2cm; padding-left: 1.5cm;*/
+     @top-center {
+         content: "奥诚科技移动应用安全检测系统检测报告";
+
+         vertical-align: bottom;
+         border-bottom: 0.5pt solid }
+     @bottom-right {
+         content: "Page " counter(page)
+                  " of " counter(pages) }
+     }
+
+html, body { font: 12pt/1.25 Fontin, serif !important; -weasy-hyphens: auto }
+body { text-align: justify; padding: 0 !important;
+       background: none !important; }
+pdfBody { display: none }
+h1 { page-break-before: auto !important; -weasy-bookmark-level: none;
+     margin-top: 0 !important; }
+h1, h2, h3, h4 { font-family: inherit !important }
